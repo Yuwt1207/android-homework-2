@@ -1,8 +1,12 @@
 package chapter.android.aweme.ss.com.homework;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.WindowManager;
 
 /**
  * 大作业:实现一个抖音消息页面,
@@ -32,9 +36,19 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class Exercises3 extends AppCompatActivity {
 
+    private RecyclerView rv;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_exercises3);
+
+        getSupportActionBar().hide();//隐藏标题栏
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);//隐藏最上面的状态拦
+
+        rv=findViewById(R.id.rv_list);
+        rv.setLayoutManager(new LinearLayoutManager(Exercises3.this));
+        rv.setAdapter(new Adapter(Exercises3.this));
     }
 
 }
